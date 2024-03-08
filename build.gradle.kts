@@ -10,7 +10,10 @@ repositories {
 }
 
 dependencies {
+    // CLI Parser
     implementation("com.github.ajalt.clikt:clikt:4.2.2")
+    // Dependency Injection
+    implementation("io.insert-koin:koin-core:3.5.3")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
