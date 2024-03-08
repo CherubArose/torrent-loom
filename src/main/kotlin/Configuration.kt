@@ -1,8 +1,11 @@
 package org.torrentloom
 
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.torrentloom.mediadata.MediaDataModule
 
 val injectionConfiguration = module {
-    single<String>(named("injectionTest")) { "injected" }
+    single<List<MediaDataModule<*>>> {
+        listOf(
+        )
+    }
 }

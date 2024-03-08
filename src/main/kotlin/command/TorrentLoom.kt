@@ -9,11 +9,12 @@ import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.torrentloom.VERSION
 import org.torrentloom.injectionConfiguration
+import org.torrentloom.mediadata.MediaDataModule
 
 object TorrentLoom : CliktCommand(), KoinComponent {
     val versionFlag by option("-v", "--version", help = "Version of the application").flag()
 
-    val injectionTest: String by inject(named("injectionTest"))
+    val mediaDataModules: List<MediaDataModule<*>> by inject()
 
     init {
         startKoin {
@@ -29,6 +30,6 @@ object TorrentLoom : CliktCommand(), KoinComponent {
             return
         }
 
-        println(injectionTest)
+        mediaDataModules.fold("") { _, module -> module.runModule(); ""}
     }
 }
