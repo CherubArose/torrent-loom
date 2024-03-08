@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation("com.github.ajalt.clikt:clikt:4.2.2")
+
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
 
