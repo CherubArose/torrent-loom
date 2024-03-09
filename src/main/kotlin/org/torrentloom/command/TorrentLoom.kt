@@ -8,7 +8,7 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.torrentloom.VERSION
-import org.torrentloom.org.torrentloom.injectionConfiguration
+import org.torrentloom.injectionConfiguration
 import org.torrentloom.loom.Shuttle
 import org.torrentloom.mediadata.MediaDataModule
 

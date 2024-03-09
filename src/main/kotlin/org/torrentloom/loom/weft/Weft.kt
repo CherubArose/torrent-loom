@@ -24,11 +24,11 @@ data class Weft(
      *
      * [media] contains details on the video file format, audio codecs and other encoding details.
      */
-    val media: Media,
+    val media: Media = Media(),
     /**
      * Meta information about the release of the file.
      *
      * [release] provides details about the release group, conditions of release, edition, etc.
      */
-    val release: Any,
+    val release: Release = Release(),
 )
