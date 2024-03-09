@@ -16,6 +16,9 @@ object TorrentLoom : CliktCommand(), KoinComponent {
     private val versionFlag by option("-v", "--version", help = "Version of the application").flag()
     private val pathArgument: String by argument("path", "Path to the file/folder to be uploaded")
 
+    /**
+     * List of all the mediaDataModule that will be run in order.
+     */
     private val mediaDataModules: List<MediaDataModule<*>> by inject()
 
     init {

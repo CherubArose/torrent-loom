@@ -10,21 +10,27 @@ package org.torrentloom.loom
  * The Heddle allows to keep track all those variants and their sources, while keeping one of them as the selected one.
  */
 data class Heddle<T : Any>(
+    /**
+     * Map of all options available for each provider.
+     */
     val options: Map<String, T>,
-    val selected: String?,
+    /**
+     * Current provider selected.
+     */
+    val selection: String?,
 ) {
     init {
-        check(selected == null || selected in options) {
-            "Failed to initialise ${Heddle::class}, the selected option '$selected' does not exist amongst $options."
+        check(selection == null || selection in options) {
+            "Failed to initialise ${Heddle::class}, the selection '$selection' does not exist amongst $options."
         }
     }
 
     /**
-     * Gets the currently selected option in the Heddle.
-     *
-     * @return the selected option, or null if none were available.
+     * Current value selected.
      */
-    fun get(): T? = options[selected]
+    val selected: T? = options[selection]
+
+    fun validateOptions(checker: HeddleOptionsChecker<T>) = options.values.find(checker::check) != null
 
     companion object {
         private val emptyHeddle = Heddle(emptyMap(), null)

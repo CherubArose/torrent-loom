@@ -2,7 +2,7 @@ package org.torrentloom.loom.weft.show
 
 import org.torrentloom.loom.Heddle
 
-interface Show {
+sealed interface Show {
     /**
      * Internationally recognised title of the show.
      *
