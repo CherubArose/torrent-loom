@@ -1,7 +1,7 @@
-package org.torrentloom.loom
+package org.torrentloom.org.torrentloom.loom
 
-import org.torrentloom.loom.weft.Weft
-import org.torrentloom.mediadata.MediaData
+import org.torrentloom.org.torrentloom.loom.weft.Weft
+import org.torrentloom.org.torrentloom.mediadata.MediaData
 
 /**
  * Container about the current Torrent being prepared.

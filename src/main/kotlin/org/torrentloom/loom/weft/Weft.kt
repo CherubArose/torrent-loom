@@ -1,7 +1,7 @@
-package org.torrentloom.loom.weft
+package org.torrentloom.org.torrentloom.loom.weft
 
-import org.torrentloom.loom.weft.media.Media
-import org.torrentloom.loom.weft.show.Show
+import org.torrentloom.org.torrentloom.loom.weft.media.Media
+import org.torrentloom.org.torrentloom.loom.weft.show.Show
 
 /**
  * Metadata relating to an upload being prepared.

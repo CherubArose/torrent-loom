@@ -8,9 +8,9 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
 import org.torrentloom.VERSION
-import org.torrentloom.injectionConfiguration
-import org.torrentloom.loom.Shuttle
-import org.torrentloom.mediadata.MediaDataModule
+import org.torrentloom.org.torrentloom.injectionConfiguration
+import org.torrentloom.org.torrentloom.loom.Shuttle
+import org.torrentloom.org.torrentloom.mediadata.MediaDataModule
 
 object TorrentLoom : CliktCommand(), KoinComponent {
     private val versionFlag by option("-v", "--version", help = "Version of the application").flag()
@@ -31,7 +31,7 @@ object TorrentLoom : CliktCommand(), KoinComponent {
 
     override fun run() {
         if (versionFlag) {
-            println("TorrentLoom v${VERSION}")
+            println("TorrentLoom v$VERSION")
             return
         }
 

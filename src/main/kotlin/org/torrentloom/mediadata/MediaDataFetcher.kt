@@ -1,4 +1,4 @@
-package org.torrentloom.mediadata
+package org.torrentloom.org.torrentloom.mediadata
 
 /**
  * MediaData fetcher.

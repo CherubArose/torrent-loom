@@ -1,4 +1,4 @@
-package org.torrentloom.loom
+package org.torrentloom.org.torrentloom.loom
 
 /**
  * Data holder for variants of a same value.

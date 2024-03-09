@@ -1,6 +1,6 @@
-package org.torrentloom.loom.weft.media
+package org.torrentloom.org.torrentloom.loom.weft.media
 
-import org.torrentloom.loom.Heddle
+import org.torrentloom.org.torrentloom.loom.Heddle
 
 data class Media(
     /**
