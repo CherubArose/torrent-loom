@@ -1,6 +1,6 @@
-package org.torrentloom.org.torrentloom.mediadata
+package org.torrentloom.mediadata
 
-import org.torrentloom.org.torrentloom.loom.Shuttle
+import org.torrentloom.loom.Shuttle
 
 abstract class MediaDataModule<M : MediaData> {
     val moduleIdentifier: String = this::class.qualifiedName!!

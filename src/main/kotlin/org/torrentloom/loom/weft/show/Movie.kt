@@ -1,6 +1,6 @@
 package org.torrentloom.org.torrentloom.loom.weft.show
 
-import org.torrentloom.org.torrentloom.loom.Heddle
+import org.torrentloom.loom.Heddle
 
 data class Movie(
     override val title: Heddle<String> = Heddle.emptyHeddle(),

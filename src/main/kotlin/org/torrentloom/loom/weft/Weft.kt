@@ -1,5 +1,6 @@
-package org.torrentloom.org.torrentloom.loom.weft
+package org.torrentloom.loom.weft
 
+import org.torrentloom.loom.weft.release.Release
 import org.torrentloom.org.torrentloom.loom.weft.media.Media
 import org.torrentloom.org.torrentloom.loom.weft.show.Show
 
