@@ -11,6 +11,7 @@ import org.torrentloom.VERSION
 import org.torrentloom.injectionConfiguration
 import org.torrentloom.loom.Shuttle
 import org.torrentloom.mediadata.MediaDataModule
+import org.torrentloom.mediadata.guessit.GuessItModule
 
 object TorrentLoom : CliktCommand(), KoinComponent {
     private val versionFlag by option("-v", "--version", help = "Version of the application").flag()
@@ -25,6 +26,7 @@ object TorrentLoom : CliktCommand(), KoinComponent {
         startKoin {
             modules(
                 injectionConfiguration,
+                GuessItModule.defaultModuleConfiguration
             )
         }
     }
