@@ -7,5 +7,5 @@ package org.torrentloom.mediadata
  * That data can then be parsed and processed elsewhere.
  */
 interface MediaDataFetcher<M : MediaData> {
-    fun fetchData(): M
+    fun fetchData(): M?
 }
