@@ -16,7 +16,9 @@ dependencies {
     implementation(libs.koin)
     implementation(libs.kotlinxSerialization)
     implementation(libs.kommand)
+    implementation(libs.kotlinLogging)
 
+    runtimeOnly(libs.slf4j)
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }

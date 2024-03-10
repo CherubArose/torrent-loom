@@ -5,7 +5,7 @@ import org.torrentloom.loom.Heddle
 import org.torrentloom.loom.Shuttle
 
 abstract class MediaDataModule<M : MediaData> {
-    val moduleIdentifier: String = this::class.qualifiedName!!
+    val moduleIdentifier: String = this::class.simpleName!!
     abstract val defaultModuleConfiguration: Module
 
     protected abstract val fetcher: MediaDataFetcher<M>
