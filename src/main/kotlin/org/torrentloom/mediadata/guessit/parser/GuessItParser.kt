@@ -2,6 +2,7 @@ package org.torrentloom.mediadata.guessit.parser
 
 import org.torrentloom.loom.weft.Weft
 import org.torrentloom.loom.weft.media.Media
+import org.torrentloom.loom.weft.media.Resolution
 import org.torrentloom.loom.weft.release.Release
 import org.torrentloom.loom.weft.show.Movie
 import org.torrentloom.loom.weft.show.Series
@@ -32,7 +33,11 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
         is Series -> parseSeries(data, show)
     }
 
-    private fun parseMovie(data: GuessItData, movie: Movie): Movie = movie
+    private fun parseMovie(data: GuessItData, movie: Movie): Movie = movie.copy(
+        title = movie.title.addOptionIfNotNull(data.formattedTitle),
+        releaseYear = movie.releaseYear.addOptionIfNotNull(data.year),
+    )
+
     private fun parseSeries(data: GuessItData, series: Series): Series = series.copy(
         title = series.title.addOptionIfNotNull(data.formattedTitle),
         releaseYear = series.releaseYear.addOptionIfNotNull(data.year),
@@ -50,7 +55,9 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
         source = release.source.addOptionIfNotNull(data.releaseSource),
     )
 
-    private fun parseMedia(data: GuessItData, media: Media): Media = media
+    private fun parseMedia(data: GuessItData, media: Media): Media = media.copy(
+        resolution = media.resolution.addOptionIfNotNull(data.resolution)
+    )
 
     private val GuessItData.formattedTitle: String?
         get() = title?.let { title + (country?.let { " ($it)" } ?: "") }
@@ -70,6 +77,7 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
 
             else -> null
         }
+
     private val GuessItData.releaseSource: ReleaseSource?
         get() = when (source) {
             Source.UltraHDBluray, Source.BluRay -> ReleaseSource.BluRay
@@ -80,6 +88,24 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
             Source.UltraHDTV -> ReleaseSource.UHDTV
             Source.AnalogHDTV, Source.HDTV -> ReleaseSource.HDTV
             Source.TV -> ReleaseSource.TV
+            else -> null
+        }
+
+    private val GuessItData.resolution: Resolution?
+        get() = when (screenSize) {
+            "360i", "360p", "368p" -> null
+            "480i" -> Resolution.`480i`
+            "480p" -> Resolution.`480p`
+            "540i", "540p" -> null
+            "576i" -> Resolution.`576i`
+            "576p" -> Resolution.`576p`
+            "720p" -> Resolution.`720p`
+            "900i", "900p" -> null
+            "1080i" -> Resolution.`1080i`
+            "1080p" -> Resolution.`1080p`
+            "1440p" -> Resolution.`1440p`
+            "2160p" -> Resolution.`2160p`
+            "4320p" -> Resolution.`4320p`
             else -> null
         }
 }
