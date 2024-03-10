@@ -66,6 +66,7 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
                 Source.UltraHDTV,
                 Source.DigitalTV
             ) -> ReleaseType.HDTV
+
             else -> null
         }
 }

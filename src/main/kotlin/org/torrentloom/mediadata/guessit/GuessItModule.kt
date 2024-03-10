@@ -6,7 +6,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.torrentloom.mediadata.MediaData
 import org.torrentloom.mediadata.MediaDataModule
 import org.torrentloom.mediadata.guessit.data.GuessItData
 import org.torrentloom.mediadata.guessit.fetcher.DefaultGuessItFetcher
