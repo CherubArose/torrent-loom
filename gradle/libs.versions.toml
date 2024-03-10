@@ -3,11 +3,13 @@ kotlin = "1.9.20"
 clikt = "4.2.2"
 koin = "3.5.3"
 kotlinxSerialization = "1.6.0"
+kommand = "2.0.1"
 
 [libraries]
 clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
 koin = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlinxSerialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kommand = { module = "com.kgit2:kommand", version.ref = "kommand" }
 
 [plugins]
 jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

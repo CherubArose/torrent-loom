@@ -15,6 +15,8 @@ dependencies {
     implementation(libs.clikt)
     implementation(libs.koin)
     implementation(libs.kotlinxSerialization)
+    implementation(libs.kommand)
+
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
