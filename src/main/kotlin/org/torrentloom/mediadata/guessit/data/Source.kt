@@ -9,7 +9,7 @@ enum class Source {
     AnalogHDTV,
 
     @SerialName("Blu-ray")
-    Bluray,
+    BluRay,
     Camera,
 
     @SerialName("Digital Master")

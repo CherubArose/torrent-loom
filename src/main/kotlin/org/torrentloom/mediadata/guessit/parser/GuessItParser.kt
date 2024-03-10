@@ -11,6 +11,7 @@ import org.torrentloom.mediadata.guessit.data.GuessItData
 import org.torrentloom.mediadata.guessit.data.Other
 import org.torrentloom.mediadata.guessit.data.Source
 import org.torrentloom.mediadata.guessit.data.Type
+import org.torrentloom.loom.weft.release.Source as ReleaseSource
 import org.torrentloom.loom.weft.release.Type as ReleaseType
 
 class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleName) {
@@ -46,7 +47,7 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
         // cut = release.cut.addOption()
         // edition = release.edition.addOption(buildEditions(result)),
         type = release.type.addOptionIfNotNull(data.releaseType),
-        // sourceSelector = release.sourceSelector.addOption(getSource(result)),
+        source = release.source.addOptionIfNotNull(data.releaseSource),
     )
 
     private fun parseMedia(data: GuessItData, media: Media): Media = media
@@ -67,6 +68,18 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
                 Source.DigitalTV
             ) -> ReleaseType.HDTV
 
+            else -> null
+        }
+    private val GuessItData.releaseSource: ReleaseSource?
+        get() = when (source) {
+            Source.UltraHDBluray, Source.BluRay -> ReleaseSource.BluRay
+            Source.Web -> ReleaseSource.Web
+            Source.DVD -> ReleaseSource.DVD
+            Source.HDDVD -> ReleaseSource.HD_DVD
+            Source.VHS -> ReleaseSource.VHS
+            Source.UltraHDTV -> ReleaseSource.UHDTV
+            Source.AnalogHDTV, Source.HDTV -> ReleaseSource.HDTV
+            Source.TV -> ReleaseSource.TV
             else -> null
         }
 }

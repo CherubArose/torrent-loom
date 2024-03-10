@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 enum class Source {
-    Bluray,
+    BluRay,
     DVD,
     HD_DVD,
     Web,
