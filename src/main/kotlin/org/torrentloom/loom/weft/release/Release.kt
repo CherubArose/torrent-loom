@@ -1,7 +1,7 @@
 package org.torrentloom.loom.weft.release
 
-import org.torrentloom.loom.weft.release.disc.DiscInfo
 import org.torrentloom.loom.Heddle
+import org.torrentloom.loom.weft.release.disc.DiscInfo
 
 data class Release(
     /**

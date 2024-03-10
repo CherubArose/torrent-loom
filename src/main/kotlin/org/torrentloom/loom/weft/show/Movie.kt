@@ -1,4 +1,4 @@
-package org.torrentloom.org.torrentloom.loom.weft.show
+package org.torrentloom.loom.weft.show
 
 import org.torrentloom.loom.Heddle
 

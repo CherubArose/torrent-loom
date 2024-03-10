@@ -35,6 +35,6 @@ object TorrentLoom : CliktCommand(), KoinComponent {
             return
         }
 
-        mediaDataModules.fold(Shuttle(path = pathArgument)) { shuttle, module -> module.runModule(shuttle)}
+        mediaDataModules.fold(Shuttle(path = pathArgument)) { shuttle, module -> module.runModule(shuttle) }
     }
 }

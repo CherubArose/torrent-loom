@@ -1,6 +1,6 @@
 package org.torrentloom.loom.weft.release
 
-    enum class AspectRatio {
+enum class AspectRatio {
     /**
      * Original Aspect-Ratio.
      *

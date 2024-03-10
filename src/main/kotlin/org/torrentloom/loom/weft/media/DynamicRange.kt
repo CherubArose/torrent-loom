@@ -1,4 +1,4 @@
-package org.torrentloom.org.torrentloom.loom.weft.media
+package org.torrentloom.loom.weft.media
 
 enum class DynamicRange {
     /**

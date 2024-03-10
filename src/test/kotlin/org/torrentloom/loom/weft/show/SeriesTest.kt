@@ -3,7 +3,6 @@ package org.torrentloom.loom.weft.show
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
 import org.torrentloom.loom.Heddle
-import org.torrentloom.org.torrentloom.loom.weft.show.Series
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
