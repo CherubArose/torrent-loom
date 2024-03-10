@@ -1,6 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
+    alias(libs.plugins.jvm)
+    alias(libs.plugins.serialization)
+    application
 }
 
 group = "org.torrentloom"
@@ -11,13 +12,9 @@ repositories {
 }
 
 dependencies {
-    // CLI Parser
-    implementation("com.github.ajalt.clikt:clikt:4.2.2")
-    // Dependency Injection
-    implementation("io.insert-koin:koin-core:3.5.3")
-    // JSon Serialization
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-
+    implementation(libs.clikt)
+    implementation(libs.koin)
+    implementation(libs.kotlinxSerialization)
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
@@ -25,6 +22,11 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(21)
+}
+
+application {
+    mainClass.set("org.torrentloom.MainKt")
 }
