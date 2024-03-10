@@ -1,6 +1,7 @@
 package org.torrentloom.mediadata
 
 import org.koin.core.module.Module
+import org.torrentloom.loom.Heddle
 import org.torrentloom.loom.Shuttle
 
 abstract class MediaDataModule<M : MediaData> {
@@ -18,7 +19,7 @@ abstract class MediaDataModule<M : MediaData> {
                 ?: it
         }
 
-    private fun fetchMediaData(shuttle: Shuttle): Shuttle = when (val mediaData = fetcher.fetchData()) {
+    private fun fetchMediaData(shuttle: Shuttle): Shuttle = when (val mediaData = fetcher.fetchData(shuttle)) {
         null -> shuttle.copy(mediaData = shuttle.mediaData.minus(moduleIdentifier))
         else -> shuttle.copy(mediaData = shuttle.mediaData.plus(moduleIdentifier to mediaData))
     }.also {
