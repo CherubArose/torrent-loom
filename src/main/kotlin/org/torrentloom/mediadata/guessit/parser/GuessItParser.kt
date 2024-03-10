@@ -37,6 +37,7 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
         releaseYear = series.releaseYear.addOptionIfNotNull(data.year),
         seasons = series.seasons.addOptionIfNotNull(data.episodes),
         episodes = series.episodes.addOptionIfNotNull(data.episodes),
+        partTitle = series.partTitle.addOptionIfNotNull(data.episodeTitle),
     )
 
     private fun parseRelease(data: GuessItData, release: Release): Release = release.copy(

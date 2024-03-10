@@ -25,6 +25,11 @@ data class GuessItData(
     @SerialName("alternative_title")
     val alternativeTitle: String? = null,
     /**
+     * Film title of this movie.
+     */
+    @SerialName("episode_title")
+    val episodeTitle: String? = null,
+    /**
      * Container of the file.
      *
      * - 3g23gp

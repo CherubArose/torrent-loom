@@ -7,7 +7,7 @@ import org.torrentloom.mediadata.guessit.data.Type
 
 object DefaultGuessItFetcher : GuessItFetcher {
     override fun runGuessIt(path: String, type: Type?): GuessItData = Command("guessit")
-        .args(buildGuessItParams(type) + path)
+        .args("-j", *buildGuessItParams(type).toTypedArray(), path)
         .spawn()
         .waitWithOutput()
         .run {
@@ -15,4 +15,6 @@ object DefaultGuessItFetcher : GuessItFetcher {
         }
 
     private fun buildGuessItParams(type: Type?) = type?.let { listOf("--type", type.name.lowercase()) } ?: emptyList()
+
+    private fun Command.args(vararg args: String) = args(args.toList())
 }
