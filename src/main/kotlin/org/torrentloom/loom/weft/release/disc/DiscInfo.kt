@@ -1,10 +1,12 @@
 package org.torrentloom.loom.weft.release.disc
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.Heddle
 
 /**
  * Information about the disc
  */
+@Serializable
 data class DiscInfo(
     val type: Heddle<DiscType> = Heddle.emptyHeddle(),
     /**

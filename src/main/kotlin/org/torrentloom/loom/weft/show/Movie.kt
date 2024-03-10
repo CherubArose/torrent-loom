@@ -1,7 +1,9 @@
 package org.torrentloom.loom.weft.show
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.Heddle
 
+@Serializable
 data class Movie(
     override val title: Heddle<String> = Heddle.emptyHeddle(),
     override val originalTitle: Heddle<String> = Heddle.emptyHeddle(),

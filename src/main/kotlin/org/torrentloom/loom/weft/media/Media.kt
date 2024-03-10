@@ -1,7 +1,9 @@
 package org.torrentloom.loom.weft.media
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.Heddle
 
+@Serializable
 data class Media(
     /**
      * Resolution of the media.

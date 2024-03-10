@@ -1,5 +1,8 @@
 package org.torrentloom.loom.weft.media
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class DynamicRange {
     /**
      * HDR10+.

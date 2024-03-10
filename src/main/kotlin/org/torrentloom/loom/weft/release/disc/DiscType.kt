@@ -1,8 +1,11 @@
 package org.torrentloom.loom.weft.release.disc
 
+import kotlinx.serialization.Serializable
+
 /**
  * Types of discs for full disc uploads.
  */
+@Serializable
 enum class DiscType {
     /**
      * Blu-ray disc.

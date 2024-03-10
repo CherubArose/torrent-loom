@@ -1,5 +1,7 @@
 package org.torrentloom.loom
 
+import kotlinx.serialization.Serializable
+
 /**
  * Data holder for variants of a same value.
  *
@@ -9,6 +11,7 @@ package org.torrentloom.loom
  *
  * The Heddle allows to keep track all those variants and their sources, while keeping one of them as the selected one.
  */
+@Serializable
 data class Heddle<T : Any>(
     /**
      * Map of all options available for each provider.

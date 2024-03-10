@@ -1,5 +1,6 @@
 package org.torrentloom.loom.weft
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.weft.media.Media
 import org.torrentloom.loom.weft.release.Release
 import org.torrentloom.loom.weft.show.Show
@@ -11,6 +12,7 @@ import org.torrentloom.loom.weft.show.Show
  *
  * More info: [Wikipedia](https://en.wikipedia.org/wiki/Warp_and_weft).
  */
+@Serializable
 data class Weft(
     /**
      * Details about the show.

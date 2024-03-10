@@ -1,8 +1,10 @@
 package org.torrentloom.loom.weft.release
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.Heddle
 import org.torrentloom.loom.weft.release.disc.DiscInfo
 
+@Serializable
 data class Release(
     /**
      * Cut version of the show.

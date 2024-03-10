@@ -1,8 +1,11 @@
 package org.torrentloom.loom.weft.release
 
+import kotlinx.serialization.Serializable
+
 /**
  * Well known streaming and VOD services.
  */
+@Serializable
 enum class Service(vararg val alternativeNames: String) {
     AE("A&E"),
     ADN("Animation Digital Network"),

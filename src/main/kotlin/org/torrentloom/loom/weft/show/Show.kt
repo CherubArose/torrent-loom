@@ -1,7 +1,9 @@
 package org.torrentloom.loom.weft.show
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.Heddle
 
+@Serializable
 sealed interface Show {
     /**
      * Internationally recognised title of the show.

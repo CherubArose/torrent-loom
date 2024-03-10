@@ -1,5 +1,8 @@
 package org.torrentloom.loom.weft.media
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Resolution {
     /**
      * 8640p, also known as 16K resolution

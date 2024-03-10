@@ -1,10 +1,12 @@
 package org.torrentloom.loom.weft.show
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.Heddle
 
 /**
  * TV Series as a Show
  */
+@Serializable
 data class Series(
     override val title: Heddle<String> = Heddle.emptyHeddle(),
     override val originalTitle: Heddle<String> = Heddle.emptyHeddle(),
@@ -33,12 +35,8 @@ data class Series(
      */
     val episodes: Heddle<List<Int>> = Heddle.emptyHeddle(),
 ) : Show {
-    val type: Type
-
-    init {
-        check(seasons.validateOptions { it.isNotEmpty() }) { "One of the options in Season is an empty list: $seasons" }
-
-        type = when {
+    val type: Type by lazy {
+        when {
             // No season, No episode
             seasons.selected == null && episodes.selected == null -> Type.Unassigned
             // One season, One episode
@@ -51,6 +49,10 @@ data class Series(
             (seasons.selected?.size ?: 0) > 1 && episodes.selected?.isEmpty() ?: false -> Type.MultiSeasons
             else -> throw IllegalStateException("Unsupported combination of Season(s) ${seasons.selected} and Episode(s) ${episodes.selected}")
         }
+    }
+
+    init {
+        check(seasons.validateOptions { it.isNotEmpty() }) { "One of the options in Season is an empty list: $seasons" }
     }
 
     /**

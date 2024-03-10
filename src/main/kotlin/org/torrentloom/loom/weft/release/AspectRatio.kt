@@ -1,5 +1,8 @@
 package org.torrentloom.loom.weft.release
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class AspectRatio {
     /**
      * Original Aspect-Ratio.

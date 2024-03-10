@@ -1,8 +1,11 @@
 package org.torrentloom.loom.weft.release
 
+import kotlinx.serialization.Serializable
+
 /**
  * Types of P2P release.
  */
+@Serializable
 enum class Type {
     /**
      * Content extracted from a non-web source put in a media container with no re-encoding or any other modification.

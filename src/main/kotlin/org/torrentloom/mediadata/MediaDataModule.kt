@@ -1,5 +1,6 @@
 package org.torrentloom.mediadata
 
+import kotlinx.serialization.modules.PolymorphicModuleBuilder
 import org.koin.core.module.Module
 import org.torrentloom.loom.Heddle
 import org.torrentloom.loom.Shuttle
@@ -33,4 +34,5 @@ abstract class MediaDataModule<M : MediaData> {
 
     @Suppress("UNCHECKED_CAST")
     fun getMediaData(shuttle: Shuttle): M? = shuttle.mediaData[moduleIdentifier] as? M
+    abstract fun registerMediaDataFormat(builder: PolymorphicModuleBuilder<M>)
 }

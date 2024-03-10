@@ -1,11 +1,13 @@
 package org.torrentloom.loom
 
+import kotlinx.serialization.Serializable
 import org.torrentloom.loom.weft.Weft
 import org.torrentloom.mediadata.MediaData
 
 /**
  * Container about the current Torrent being prepared.
  */
+@Serializable
 data class Shuttle(
     /**
      * Path to the folder/file being processed.
