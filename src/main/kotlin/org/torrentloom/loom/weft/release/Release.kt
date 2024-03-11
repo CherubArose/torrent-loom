@@ -52,8 +52,7 @@ data class Release(
      * e.g. [Source.DVD], or [Source.Web]
      */
     val source: Heddle<Source> = Heddle.emptyHeddle(),
-    //TODO: Use the Service Enum rather than String?
-    val service: Heddle<String> = Heddle.emptyHeddle(),
+    val service: Heddle<Service> = Heddle.emptyHeddle(),
     /**
      * Name of the release group
      *

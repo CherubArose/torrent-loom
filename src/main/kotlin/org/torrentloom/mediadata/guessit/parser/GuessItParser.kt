@@ -5,6 +5,7 @@ import org.torrentloom.loom.weft.media.DynamicRange
 import org.torrentloom.loom.weft.media.Media
 import org.torrentloom.loom.weft.media.Resolution
 import org.torrentloom.loom.weft.release.Release
+import org.torrentloom.loom.weft.release.Service
 import org.torrentloom.loom.weft.show.Movie
 import org.torrentloom.loom.weft.show.Series
 import org.torrentloom.loom.weft.show.Show
@@ -49,7 +50,7 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
 
     private fun parseRelease(data: GuessItData, release: Release): Release = release.copy(
         releaseGroup = release.releaseGroup.addOptionIfNotNull(data.releaseGroup),
-        service = release.service.addOptionIfNotNull(data.streamingService),
+        service = release.service.addOptionIfNotNull(data.service),
         // cut = release.cut.addOption()
         // edition = release.edition.addOption(buildEditions(result)),
         type = release.type.addOptionIfNotNull(data.releaseType),
@@ -120,4 +121,8 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
             Other.DolbyVision in other -> DynamicRange.DV
             else -> null
         }
+
+
+    private val GuessItData.service: Service?
+        get() = streamingService?.let { Service.find(it) }
 }
