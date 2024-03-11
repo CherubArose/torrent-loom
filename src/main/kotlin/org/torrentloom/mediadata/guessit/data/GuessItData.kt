@@ -23,7 +23,8 @@ data class GuessItData(
      * Other titles found for movie.
      */
     @SerialName("alternative_title")
-    val alternativeTitle: String? = null,
+    @Serializable(StringListSerializer::class)
+    val alternativeTitle: List<String>? = null,
     /**
      * Title of the episode.
      */
@@ -71,7 +72,8 @@ data class GuessItData(
      * - wma
      * - wmv
      */
-    val container: String? = null,
+    @Serializable(StringListSerializer::class)
+    val container: List<String>? = null,
     /**
      * Mime type of the related container. Guessed values may vary based on OS native support of mime type.
      */
@@ -106,19 +108,30 @@ data class GuessItData(
      * Season number. (Can be a list if several are found)
      */
     @SerialName("season")
-    @Serializable(with = IntListSerializer::class)
-    val seasons: List<Int>? = null, // TODO: check the case of single vs multiple seasons && Int vs String
+    @Serializable(IntListSerializer::class)
+    val seasons: List<Int>? = null,
     /**
      * Episode number. (Can be a list if several are found)
      */
     @SerialName("episode")
-    @Serializable(with = IntListSerializer::class)
-    val episodes: List<Int>? = null, // TODO: check the case of single vs multiple episodes && Int vs String
+    @Serializable(IntListSerializer::class)
+    val episodes: List<Int>? = null,
+    /**
+     * Absolute episode number. (Can be a list if several are found)
+     */
+    @SerialName("absolute_episode")
+    @Serializable(IntListSerializer::class)
+    val absoluteEpisodes: List<Int>? = null,
     /**
      * Disc number. (Can be a list if several are found)
      */
-    @Serializable(with = IntListSerializer::class)
-    val disc: List<Int>? = null, // TODO: check the case of single vs multiple discs && Int vs String
+    @Serializable(IntListSerializer::class)
+    val disc: List<Int>? = null,
+    /**
+     * Part 
+     */
+    @Serializable(IntListSerializer::class)
+    val part: List<Int>? = null,
     /**
      * Total number of episodes.
      */
@@ -137,7 +150,8 @@ data class GuessItData(
      * - Unaired
      */
     @SerialName("episode_details")
-    val episodeDetails: String? = null,
+    @Serializable(StringListSerializer::class)
+    val episodeDetails: List<String>? = null,
     /**
      * Episode format of the series.
      * - Minisode
@@ -214,7 +228,8 @@ data class GuessItData(
      * - `High Efficiency Video Coding`
      */
     @SerialName("video_profile")
-    val videoProfile: String? = null,
+    @Serializable(StringListSerializer::class)
+    val videoProfile: List<String>? = null,
     /**
      * Bit depth used for video.
      *
@@ -256,7 +271,8 @@ data class GuessItData(
      * - `7.1`
      */
     @SerialName("audio_channels")
-    val audioChannels: String? = null,
+    @Serializable(StringListSerializer::class)
+    val audioChannels: List<String>? = null,
     /**
      * Codec used for audio.
      *
@@ -275,7 +291,7 @@ data class GuessItData(
      * - `Vorbis`
      */
     @SerialName("audio_codec")
-    @Serializable(with = StringListSerializer::class)
+    @Serializable(StringListSerializer::class)
     val audioCodec: List<String>? = null,
     /**
      * The codec profile used for audio.
@@ -289,7 +305,8 @@ data class GuessItData(
      * - `Master Audio`
      */
     @SerialName("audio_profile")
-    val audioProfile: String? = null,
+    @Serializable(StringListSerializer::class)
+    val audioProfile: List<String>? = null,
     /**
      * Audio bit rate (Kbps, Mbps). Examples: `448Kbps` (`<BitRate [448Kbps]>`), `1.5Mbps` (`<BitRate [1.5Mbps]>`).
      *
@@ -312,7 +329,7 @@ data class GuessItData(
      * `[<babelfish.Language>]` (This class equals name and iso code)
      */
     @SerialName("language")
-    @Serializable(with = StringListSerializer::class)
+    @Serializable(StringListSerializer::class)
     val languages: List<String>? = null,
     /**
      * Language(s) of the subtitles.
@@ -320,7 +337,7 @@ data class GuessItData(
      * `[<babelfish.Language>]` (This class equals name and iso code)
      */
     @SerialName("subtitle_language")
-    @Serializable(with = StringListSerializer::class)
+    @Serializable(StringListSerializer::class)
     val subtitleLanguages: List<String>? = null,
 
     // Other properties
@@ -328,7 +345,7 @@ data class GuessItData(
     /**
      * Bonus number.
      */
-    val bonus: String? = null,
+    val bonus: Int? = null,
     /**
      * Bonus title.
      */
@@ -361,12 +378,15 @@ data class GuessItData(
     /**
      * Edition of the movie.
      */
-    @Serializable(with = Edition.ListSerializer::class)
+    @Serializable(Edition.ListSerializer::class)
     val edition: List<Edition>? = null,
     /**
-     * Film number of this movie.
+     * Film number in the series of movies.
+     *
+     * For example Goldeneye being the 17th installment of James Bond.
      */
-    val film: String? = null,
+    @SerialName("film")
+    val filmNumber: Int? = null,
     /**
      * Film title of this movie.
      */
@@ -380,7 +400,7 @@ data class GuessItData(
     /**
      * Other property will appear under this property.
      */
-    @Serializable(with = Other.ListSerializer::class)
+    @Serializable(Other.ListSerializer::class)
     val other: List<Other>? = null,
     /**
      * Count of PROPER or REPACKS

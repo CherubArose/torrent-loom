@@ -37,6 +37,8 @@ enum class Other {
     @SerialName("Fast Subtitled")
     FastSubtitled,
 
+    Fix,
+
     @SerialName("Full HD")
     FullHD,
 
@@ -125,6 +127,12 @@ enum class Other {
     WestCoastFeed,
     Widescreen,
     XXX,
+    @SerialName("Original Net Animation")
+    ONA,
+    @SerialName("Original Animation DVD")
+    OAD,
+    @SerialName("Low Definition")
+    LD,
     ;
 
     object ListSerializer : ArrayWrappingSerializer<Other>(serializer())
