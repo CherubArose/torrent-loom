@@ -92,7 +92,7 @@ class GuessItDataTest {
             videoBitRate = "videoBitRate",
             frameRate = "frameRate",
             audioChannels = "audioChannels",
-            audioCodec = "audioCodec",
+            audioCodec = listOf("audioCodec"),
             audioProfile = "audioProfile",
             audioBitRate = "audioBitRate",
             country = "country",

@@ -114,11 +114,12 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
 
 
     private val GuessItData.dynamicRange: DynamicRange?
-        get() = when{
+        get() = when {
             other == null -> null
-            Other.HDR10 in other && Other.DolbyVision in other  -> DynamicRange.DV_HDR
-            Other.HDR10 in other  -> DynamicRange.HDR10
+            Other.HDR10 in other && Other.DolbyVision in other -> DynamicRange.DV_HDR
+            Other.HDR10 in other -> DynamicRange.HDR10
             Other.DolbyVision in other -> DynamicRange.DV
+            Other.StandardDynamicRange in other -> DynamicRange.SDR
             else -> null
         }
 
