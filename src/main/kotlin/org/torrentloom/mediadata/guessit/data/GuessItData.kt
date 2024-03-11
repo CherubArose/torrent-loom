@@ -16,7 +16,7 @@ data class GuessItData(
      */
     val type: Type? = null,
     /**
-     * Title of movie or episode.
+     * Title of movie or series.
      */
     val title: String? = null,
     /**
@@ -25,7 +25,7 @@ data class GuessItData(
     @SerialName("alternative_title")
     val alternativeTitle: String? = null,
     /**
-     * Film title of this movie.
+     * Title of the episode.
      */
     @SerialName("episode_title")
     val episodeTitle: String? = null,
@@ -275,7 +275,8 @@ data class GuessItData(
      * - `Vorbis`
      */
     @SerialName("audio_codec")
-    val audioCodec: String? = null,
+    @Serializable(with = StringListSerializer::class)
+    val audioCodec: List<String>? = null,
     /**
      * The codec profile used for audio.
      *
@@ -381,4 +382,9 @@ data class GuessItData(
      */
     @Serializable(with = Other.ListSerializer::class)
     val other: List<Other>? = null,
+    /**
+     * Count of PROPER or REPACKS
+     */
+    @SerialName("proper_count")
+    val properCount: Int? = null
 ) : MediaData

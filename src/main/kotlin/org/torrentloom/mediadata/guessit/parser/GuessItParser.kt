@@ -1,6 +1,7 @@
 package org.torrentloom.mediadata.guessit.parser
 
 import org.torrentloom.loom.weft.Weft
+import org.torrentloom.loom.weft.media.DynamicRange
 import org.torrentloom.loom.weft.media.Media
 import org.torrentloom.loom.weft.media.Resolution
 import org.torrentloom.loom.weft.release.Release
@@ -41,7 +42,7 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
     private fun parseSeries(data: GuessItData, series: Series): Series = series.copy(
         title = series.title.addOptionIfNotNull(data.formattedTitle),
         releaseYear = series.releaseYear.addOptionIfNotNull(data.year),
-        seasons = series.seasons.addOptionIfNotNull(data.episodes),
+        seasons = series.seasons.addOptionIfNotNull(data.seasons),
         episodes = series.episodes.addOptionIfNotNull(data.episodes),
         partTitle = series.partTitle.addOptionIfNotNull(data.episodeTitle),
     )
@@ -56,7 +57,8 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
     )
 
     private fun parseMedia(data: GuessItData, media: Media): Media = media.copy(
-        resolution = media.resolution.addOptionIfNotNull(data.resolution)
+        resolution = media.resolution.addOptionIfNotNull(data.resolution),
+        dynamicRange = media.dynamicRange.addOptionIfNotNull(data.dynamicRange)
     )
 
     private val GuessItData.formattedTitle: String?
@@ -106,6 +108,16 @@ class GuessItParser(moduleName: String) : MediaDataParser<GuessItData>(moduleNam
             "1440p" -> Resolution.`1440p`
             "2160p" -> Resolution.`2160p`
             "4320p" -> Resolution.`4320p`
+            else -> null
+        }
+
+
+    private val GuessItData.dynamicRange: DynamicRange?
+        get() = when{
+            other == null -> null
+            Other.HDR10 in other && Other.DolbyVision in other  -> DynamicRange.DV_HDR
+            Other.HDR10 in other  -> DynamicRange.HDR10
+            Other.DolbyVision in other -> DynamicRange.DV
             else -> null
         }
 }

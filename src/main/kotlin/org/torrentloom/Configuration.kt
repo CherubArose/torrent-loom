@@ -18,6 +18,7 @@ object Configuration {
         single<List<MediaDataModule<*>>>(named("modules")) { mediaDataModules }
         single<Json> {
             Json {
+                prettyPrint = true
                 classDiscriminator = "#class"
                 serializersModule = SerializersModule {
                     polymorphic(MediaData::class) {
