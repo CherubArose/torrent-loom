@@ -182,7 +182,7 @@ data class GuessItData(
      * Aspect ratio of video. Calculated using width and height from `screen_size`
      */
     @SerialName("aspect_ratio")
-    val aspectRatio: String? = null,
+    val aspectRatio: Double? = null,
     /**
      * Codec used for video.
      *

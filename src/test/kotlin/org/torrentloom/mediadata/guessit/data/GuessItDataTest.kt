@@ -1,6 +1,8 @@
 package org.torrentloom.mediadata.guessit.data
 
 import kotlinx.serialization.json.Json
+import org.junit.jupiter.api.DynamicTest
+import org.junit.jupiter.api.TestFactory
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -84,7 +86,7 @@ class GuessItDataTest {
             version = 9,
             source = Source.DVD,
             screenSize = "screenSize",
-            aspectRatio = "aspectRatio",
+            aspectRatio = 3.1415,
             videoCodec = "videoCodec",
             videoProfile = "videoProfile",
             colorDepth = "colorDepth",
@@ -165,6 +167,13 @@ class GuessItDataTest {
 
         assertEquals(expected, actual)
     }
+
+    @TestFactory
+    fun omegaParser() =
+        ({}::class.java.getResourceAsStream("omega.json") ?: throw IllegalStateException("Missing omega"))
+            .bufferedReader().readLines().mapIndexed { index, line ->
+                DynamicTest.dynamicTest("hoy $index") { line.decodeJson<GuessItData>() }
+            } ?: emptyList()
 
     private inline fun <reified T : Any> String.decodeJson() = Json.decodeFromString<T>(this)
 }
