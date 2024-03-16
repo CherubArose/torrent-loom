@@ -10,7 +10,7 @@ object DefaultGuessItFetcher : GuessItFetcher {
     private val logger = KotlinLogging.logger {}
 
     override fun runGuessIt(path: String, type: Type?): GuessItData = Command("guessit")
-        .args("-j", *buildGuessItParams(type).toTypedArray(), path)
+        .args("-j", *typeArgs(type), path)
         .also { logger.atDebug { "Running guessit (${it.debugString()})" } }
         .spawn()
         .waitWithOutput()
@@ -18,7 +18,7 @@ object DefaultGuessItFetcher : GuessItFetcher {
             Json.decodeFromString(stdout ?: throw Exception("Failed to run the GuessIt command: $stderr"))
         }
 
-    private fun buildGuessItParams(type: Type?) = type?.let { listOf("--type", type.name.lowercase()) } ?: emptyList()
+    private fun typeArgs(type: Type?) = type?.let { arrayOf("--type", type.name.lowercase()) } ?: emptyArray()
 
     private fun Command.args(vararg args: String) = args(args.toList())
 }
