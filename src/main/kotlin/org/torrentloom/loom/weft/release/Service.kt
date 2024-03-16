@@ -94,7 +94,7 @@ enum class Service(vararg val alternativeNames: String) {
     Gaga("GagaOOLala"),
     HBO("HBO Go", "HBO-Go", "HBOGo"),
     HGTV,
-    HIDI("HIDIVE"),
+    HIDIVE("HIDI"),
     HIST("History", "History Channel"),
     HLMK("Hallmark"),
     HMAX("HBO Max"),
