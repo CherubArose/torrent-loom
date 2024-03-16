@@ -2,6 +2,7 @@ package org.torrentloom.mediadata.guessit.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.serializer
 import org.torrentloom.utils.ArrayWrappingSerializer
 
 @Serializable
@@ -135,5 +136,5 @@ enum class Other {
     LD,
     ;
 
-    object ListSerializer : ArrayWrappingSerializer<Other>(serializer())
+    object ListSerializer : ArrayWrappingSerializer<Other>(serializer<Other>())
 }

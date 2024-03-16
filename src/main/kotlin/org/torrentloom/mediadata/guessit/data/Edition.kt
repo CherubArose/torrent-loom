@@ -2,6 +2,7 @@ package org.torrentloom.mediadata.guessit.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.serializer
 import org.torrentloom.utils.ArrayWrappingSerializer
 
 @Serializable
@@ -41,5 +42,5 @@ enum class Edition {
     UltimateFan,
     ;
 
-    object ListSerializer : ArrayWrappingSerializer<Edition>(serializer())
+    object ListSerializer : ArrayWrappingSerializer<Edition>(serializer<Edition>())
 }
