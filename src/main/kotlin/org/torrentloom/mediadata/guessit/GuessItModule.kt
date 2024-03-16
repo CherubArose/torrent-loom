@@ -1,9 +1,7 @@
 package org.torrentloom.mediadata.guessit
 
-import kotlinx.serialization.modules.PolymorphicModuleBuilder
-import kotlinx.serialization.modules.subclass
-import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.torrentloom.mediadata.MediaDataModule
@@ -12,14 +10,16 @@ import org.torrentloom.mediadata.guessit.fetcher.DefaultGuessItFetcher
 import org.torrentloom.mediadata.guessit.fetcher.GuessItFetcher
 import org.torrentloom.mediadata.guessit.parser.GuessItParser
 
-object GuessItModule : MediaDataModule<GuessItData>(), KoinComponent {
-    override val fetcher: GuessItFetcher by inject(named(moduleIdentifier))
-    override val parser: GuessItParser by inject(named(moduleIdentifier))
-    override fun registerMediaDataFormat(builder: PolymorphicModuleBuilder<GuessItData>) =
-        builder.subclass(GuessItData::class)
+object GuessItModule : MediaDataModule<GuessItData>() {
+    override val moduleIdentifier: String by inject(named<GuessItModule>())
+    override val fetcher: GuessItFetcher by inject(named<GuessItModule>())
+    override val parser: GuessItParser by inject(named<GuessItModule>())
 
-    override val defaultModuleConfiguration = module {
-        single<GuessItParser>(named(moduleIdentifier)) { GuessItParser(moduleIdentifier) }
-        single<GuessItFetcher>(named(moduleIdentifier)) { DefaultGuessItFetcher }
+    override val defaultModuleConfiguration: Module = module {
+        single(named<GuessItModule>()) { GuessItModule::class.simpleName!! }
+        single<GuessItFetcher>(named<GuessItModule>()) { DefaultGuessItFetcher }
+        single<GuessItParser>(named<GuessItModule>()) { GuessItParser(get(named<GuessItModule>())) }
     }
+
+    override fun getMediaDataFormat() = mediaDataFormat<GuessItData>()
 }
